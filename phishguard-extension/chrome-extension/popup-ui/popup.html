@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>PhishGuard</h1>
+      <p>Phishing Detection System</p>
+    </header>
+    
+    <div class="status-panel">
+      <div class="status">
+        <span class="status-label">Status:</span>
+        <span id="extension-status" class="status-value">Active</span>
+      </div>
+      <div class="toggle-container">
+        <label class="toggle-switch">
+          <input type="checkbox" id="enable-toggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="stats-panel">
+      <div class="stat-item">
+        <span class="stat-label">Phishing Detected:</span>
+        <span id="phishing-count" class="stat-value">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Last Scan:</span>
+        <span id="last-scan" class="stat-value">Never</span>
+      </div>
+    </div>
+    
+    <div class="action-panel">
+      <button id="scan-page" class="action-button primary">Scan Current Page</button>
+      <button id="view-settings" class="action-button secondary">Settings</button>
+    </div>
+    
+    <div id="scan-results" class="results-panel hidden">
+      <h2>Scan Results</h2>
+      <div class="result-item">
+        <span class="result-label">Verdict:</span>
+        <span id="scan-verdict" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Confidence:</span>
+        <span id="scan-confidence" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Features Analyzed:</span>
+        <span id="scan-features" class="result-value">-</span>
+      </div>
+    </div>
+    <div id="stats-dashboard" class="results-panel hidden">
+      <h2>Usage Statistics</h2>
+      <div class="result-item">
+        <span class="result-label">Total Scans:</span>
+        <span id="total-scans" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Phishing Detected:</span>
+        <span id="total-phishing" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Detection Rate:</span>
+        <span id="detection-rate" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Days Active:</span>
+        <span id="days-active" class="result-value">-</span>
+      </div>
+    </div>  
+    <div class="action-panel">
+      <button id="view-results" class="action-button secondary">Scan Results</button>
+      <button id="view-stats" class="action-button secondary">Statistics</button>
+    </div>
+    <!-- Add this code at the end of the scan-results div in the existing file -->
+
+    <div class="feedback-panel" id="feedback-panel">
+      <h3>Was this prediction helpful?</h3>
+      <div class="feedback-buttons">
+        <button id="thumbs-up" class="feedback-button">👍 Yes</button>
+        <button id="thumbs-down" class="feedback-button">👎 No</button>
+      </div>
+      <div id="feedback-message" class="feedback-message hidden">Thank you for your feedback!</div>
+    </div>
+  </div>
+  
+  <script src="api-client.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

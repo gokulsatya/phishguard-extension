@@ -1,0 +1,49 @@
+{
+    "manifest_version": 3,
+    "name": "PhishGuard - Phishing Detection",
+    "version": "1.0.0",
+    "description": "Detects potential phishing attacks in emails and websites using machine learning",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "webNavigation",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://*.gmail.com/*",
+      "https://*.outlook.com/*"
+    ],
+    "action": {
+      "default_popup": "popup-ui/popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    },
+    "background": {
+      "service_worker": "background/service-worker.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://*.gmail.com/*",
+          "https://*.outlook.com/*",
+          "https://*.yahoo.com/mail/*"
+        ],
+        "js": ["shared/error-types.js", "shared/validators.js", "content-scripts/dom-scanner.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["shared/validators.js", "shared/error-types.js"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
